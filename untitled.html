@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Anniversary, Ishika!</title>
+  <!-- Handwriting font for names -->
+  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      background: url('https://pplx-res.cloudinary.com/image/upload/v1747207704/user_uploads/69541850/5908ed2c-cf7e-4aa0-ab18-6fb9b679ab19/1747207690998.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+    .overlay {
+      background: rgba(255,255,255,0.6);
+      min-height: 100vh;
+      width: 100vw;
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 0;
+    }
+    .center-box {
+      position: relative;
+      z-index: 1;
+      max-width: 500px;
+      margin: 80px auto 0 auto;
+      background: rgba(255,255,255,0.85);
+      border-radius: 18px;
+      box-shadow: 0 4px 16px rgba(255,105,180,0.08);
+      padding: 40px 24px 32px 24px;
+      text-align: center;
+    }
+    .password-section label {
+      font-size: 1.2em;
+      color: #ff69b4;
+      font-weight: bold;
+    }
+    .password-section input[type="password"] {
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ff69b4;
+      border-radius: 7px;
+      margin: 18px 0 12px 0;
+      width: 80%;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .password-section input[type="password"]:focus {
+      border: 2px solid #ff69b4;
+    }
+    .password-section button {
+      display: block;
+      margin: 18px auto 0 auto;
+      background: #ff69b4;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      padding: 12px 32px;
+      font-size: 1.1em;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .password-section button:disabled {
+      background: #ffc1e0;
+      cursor: not-allowed;
+    }
+    .error-msg {
+      color: #ff1493;
+      font-size: 1em;
+      margin-top: 8px;
+      min-height: 24px;
+    }
+    /* Main page styling */
+    .main-message {
+      margin-top: 0;
+      font-size: 1.15em;
+      line-height: 1.9;
+      text-align: left;
+      font-style: italic;
+    }
+    .handwriting {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.3em;
+      display: block;
+      margin: 36px 0 0 0;
+      text-align: center;
+      font-style: normal;
+      color: #d72660;
+      letter-spacing: 1px;
+    }
+    .bottom-photo-section {
+      margin-top: 48px;
+      text-align: center;
+    }
+    .bottom-photo-section img {
+      width: 90%;
+      max-width: 350px;
+      border-radius: 18px;
+      box-shadow: 0 4px 16px rgba(255,105,180,0.23);
+      margin-bottom: 12px;
+      border: 3px solid #fff;
+    }
+    .bottom-photo-section .caption {
+      font-size: 1.15em;
+      color: #ff69b4;
+      font-weight: bold;
+      margin-top: 8px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    @media (max-width: 600px) {
+      .center-box {
+        margin: 30px 5px 0 5px;
+        padding: 20px 5vw 22px 5vw;
+      }
+      .bottom-photo-section img {
+        max-width: 98vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <!-- Password Page -->
+  <div class="center-box" id="passwordPage">
+    <form class="password-section" onsubmit="return false;">
+      <label for="pwinput">Enter the special password to unlock your surprise:</label><br>
+      <input type="password" id="pwinput" autocomplete="off" placeholder="Password" required />
+      <div class="error-msg" id="errorMsg"></div>
+      <button id="nextBtn" style="display:none;" onclick="showMainPage()">Next</button>
+    </form>
+  </div>
+  <!-- Main Page (hidden initially) -->
+  <div class="center-box" id="mainPage" style="display:none;">
+    <div class="main-message">
+      A special Messege in a special day<br>
+      To,<br>
+      My dear love Ishika,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;You make my world brighter just by being in it. Even though we’re young, what we share feels truly special. Every laugh, every moment with you means the world to me. Thank you for being mine-for your care, your smile, and your heart. I’m lucky to have you😊😊. And I love you more than words can ever say❤️.<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---Your Bor Subhojit
+    </div>
+    <span class="handwriting">
+      Subhojit Haldar ( Subho, Hridaan ) &amp;<br>
+      Ishika Pal ( Isha, Siuli )
+    </span>
+    <div class="bottom-photo-section">
+      <img src="https://pplx-res.cloudinary.com/image/upload/v1747209939/user_uploads/69541850/4589eeb7-25a3-40c1-992a-dd56a7cb5281/collage_5_0-1747209918542.jpg" alt="Our Memories Collage">
+      <div class="caption">
+        I love you my cuteeeee bouu❤️😘🥰
+      </div>
+    </div>
+  </div>
+  <script>
+    // Password check logic
+    const password = "Subhoisha@862";
+    const pwInput = document.getElementById('pwinput');
+    const errorMsg = document.getElementById('errorMsg');
+    const nextBtn = document.getElementById('nextBtn');
+
+    pwInput.addEventListener('input', function() {
+      if (pwInput.value === password) {
+        errorMsg.textContent = "Password correct! Click Next.";
+        errorMsg.style.color = "#28a745";
+        nextBtn.style.display = "block";
+      } else {
+        errorMsg.textContent = "";
+        nextBtn.style.display = "none";
+      }
+    });
+
+    function showMainPage() {
+      document.getElementById('passwordPage').style.display = 'none';
+      document.getElementById('mainPage').style.display = 'block';
+      return false;
+    }
+    // Allow pressing Enter to submit if password is correct
+    pwInput.addEventListener('keyup', function(event) {
+      if (event.key === "Enter" && pwInput.value === password) {
+        showMainPage();
+      }
+    });
+  </script>
+</body>
+</html>
